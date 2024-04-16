@@ -1,0 +1,23 @@
+﻿.formGroup{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttonGroup .btn {
+    margin-right: 10px;
+}
+
+.inputField {
+    max-width: 500px;
+    border: none;
+    outline: none;
+    background-color: whitesmoke;
+    padding: 5px;
+    border-radius:5px;
+}

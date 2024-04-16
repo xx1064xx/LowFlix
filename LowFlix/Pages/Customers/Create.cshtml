@@ -1,0 +1,34 @@
+﻿@page
+@model LowFlix.Pages.Customers.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"] Customer</h1>
+
+<div>
+    <div>
+        <form method="post">
+            <div class="formGroup">
+                <label asp-for="Customer.FirstName">First Name</label>
+                <input asp-for="Customer.FirstName" class="inputField" />
+            </div>
+            <div class="formGroup">
+                <label asp-for="Customer.LastName">Last Name</label>
+                <input asp-for="Customer.LastName" class="inputField" />
+            </div>
+            <div class="formGroup">
+                <label asp-for="Customer.BirthdayDate">Birthday</label>
+                <input asp-for="Customer.BirthdayDate" class="inputField" />
+            </div>
+            <div class="formGroup">
+                <label asp-for="Customer.PhoneNumber">Phone</label>
+                <input asp-for="Customer.PhoneNumber" class="inputField" />
+            </div>
+            <div class="buttonGroup">
+                <input type="submit" value="Create" class="btn primaryButton" />
+                <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

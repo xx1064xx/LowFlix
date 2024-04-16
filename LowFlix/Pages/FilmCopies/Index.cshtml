@@ -1,0 +1,57 @@
+﻿@page
+@model LowFlix.Pages.FilmCopies.IndexModel
+@{
+    ViewData["Title"] = "FilmCopies";
+}
+
+<div>
+    @foreach (var film in Model.Films)
+    {
+        bool hasFilmCopy = false;
+        foreach (var filmCopy in Model.FilmCopies)
+        {
+            if (filmCopy.FilmId == film.FilmId)
+            {
+                hasFilmCopy = true;
+                break;
+            }
+        }
+        if (hasFilmCopy)
+        {
+            <h2>@film.Title</h2>
+            <div class="tableContainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.FilmCopies[0].FilmNumber)</th>
+                            
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var filmCopy in Model.FilmCopies)
+                        {
+                            if (film.FilmId == filmCopy.FilmId ) {
+                                <tr class="tableRow">
+
+                                    <td>@Html.DisplayFor(modelItem => filmCopy.FilmNumber)</td>
+                                    <td>
+                                        <div>
+                                            <a class="linkButton" asp-page="./Delete" asp-route-id="@filmCopy.FilmCopyId">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                            
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+        }
+    }
+
+    <div>
+        <a class="primaryButton" href="./FilmCopies/Create">Create</a>
+    </div>
+</div>

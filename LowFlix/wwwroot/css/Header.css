@@ -1,0 +1,131 @@
+﻿header{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 5rem;
+    transition: 0.3s ease;
+    
+}
+
+.navbarDiv {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1400px;
+    
+}
+
+.navbarTop{
+    display: flex;
+    flex-direction: row;
+}
+
+.navbarBottom  {
+    transition: 0.3s ease;
+}
+
+.lowFlixIndexLogo {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    margin-right: 15px;
+}
+
+.lowFlixIndexLogo a {
+    font-size: 2.5rem;
+    color: darkolivegreen;
+    text-decoration: none;
+}
+
+.navbarDiv div {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+    .navbarDiv div ul {
+        display: flex;
+        height: 3rem;
+        flex-direction: row;
+        list-style-type: none;
+        align-items: center;
+        
+    }
+
+        .navbarDiv div ul li {
+            margin: 15px;
+            
+        }
+
+        .navbarDiv div ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+.hamburgerMenu{
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+    position: relative;
+}   
+
+.hamburgerMenu span {
+    height: 5px;
+    width: 100%;
+    background-color: black;
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s ease;
+}
+
+.hamburgerMenu span:nth-child(1){
+    top: 25%;
+}
+
+.hamburgerMenu span:nth-child(3) {
+    top: 75%;
+}
+
+.hamburgerMenu.active span:nth-child(1){
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+    .hamburgerMenu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburgerMenu.active span:nth-child(3) {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+
+
+@media (max-width: 768px) {
+
+    .navbar.active {
+        height: 20rem;
+    }
+
+    .navbarDiv {
+        flex-direction: column;
+        align-items: unset;
+        left: 450px;
+    }
+    
+
+        .navbarDiv div ul {
+            flex-direction: column;
+        }
+
+}

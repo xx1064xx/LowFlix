@@ -1,0 +1,35 @@
+﻿@page
+@model LowFlix.Pages.Films.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@ViewData["Title"] Film</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="formGroup">
+                <label asp-for="Film.Title">Title</label>
+                <input asp-for="Film.Title" class="inputField" />
+            </div>
+            <div class="formGroup">
+                <label asp-for="Film.Director">Director</label>
+                <input asp-for="Film.Director" class="inputField" />
+            </div>
+            <div class="formGroup">
+                <label asp-for="Film.WatchTimeMinutes">Watchtime (minutes)</label>
+                <input asp-for="Film.WatchTimeMinutes" class="inputField" />
+            </div>
+            <div class="formGroup">
+                <label asp-for="Film.Year"></label>
+                <input asp-for="Film.Year" class="inputField" />
+            </div>
+            <div class="buttonGroup">
+                <input asp-for="Film.FilmId" type="hidden" />
+                <input type="submit" value="Edit" class="btn primaryButton"/>
+                <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

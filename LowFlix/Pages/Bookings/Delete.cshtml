@@ -1,0 +1,32 @@
+﻿@page
+@model LowFlix.Pages.Bookings.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>@ViewData["Title"] Booking</h1>
+
+<div class="row">
+    <div>
+        <form method="post">
+            <div class="formGroup">
+                <label asp-for="Booking.CustomerName">Customer</label>
+                <label class="inputField">@Model.Booking.CustomerName</label>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Booking.FilmTitle">Film</label>
+                <label class="inputField">@Model.Booking.FilmTitle</label>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Booking.RentalDate">start date</label>
+                <label class="inputField">@Model.getDate(Model.Booking.RentalDate)</label>
+            </div>
+            <div class="buttonGroup">
+                <input asp-for="Booking.BookingId" type="hidden" />
+                <input type="submit" value="Delete" class="btn dangerButton" />
+                <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>

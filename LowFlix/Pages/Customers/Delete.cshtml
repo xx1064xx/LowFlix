@@ -1,0 +1,33 @@
+﻿@page
+@model LowFlix.Pages.Customers.DeleteModel
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div>
+    <div>
+        <form method="post">
+            <div class="formGroup">
+                <label asp-for="Customer.FirstName">First Name</label>
+                <label class="inputField">@Model.Customer.FirstName</label>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Customer.LastName">Last Name</label>
+                <label class="inputField">@Model.Customer.LastName</label>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Customer.BirthdayDate">Birthday</label>
+                <label class="inputField">@Model.getDate(Model.Customer.BirthdayDate)</label>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Customer.PhoneNumber">Phone</label>
+                <label class="inputField">@Model.Customer.PhoneNumber</label>
+            </div>
+            <div class="buttonGroup">
+                <input asp-for="Customer.CustomerId" type="hidden" />
+                <input type="submit" value="Delete" class="btn dangerButton" />
+                <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

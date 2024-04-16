@@ -1,0 +1,31 @@
+﻿@page
+@model LowFlix.Pages.Bookings.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"] Booking</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="formGroup">
+                <label asp-for="Booking.CustomerId">Customer</label>
+                <select class="inputField" asp-for="Booking.CustomerId" asp-items="Model.CustomerList"></select>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Booking.FilmId">Film</label>
+                <select class="inputField" asp-for="Booking.FilmId" asp-items="Model.FilmList"></select>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Booking.RentalDate"></label>
+                <input class="inputField" asp-for="Booking.RentalDate" />
+            </div>
+            <div class="buttonGroup">
+                <input type="submit" value="Create" class="btn primaryButton"/>
+                <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+</div>

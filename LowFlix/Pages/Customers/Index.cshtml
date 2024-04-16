@@ -1,0 +1,47 @@
+﻿@page
+@model LowFlix.Pages.Customers.IndexModel
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div>
+    <h1>Customers</h1>
+    <div class="tableContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Customers[0].FirstName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Customers[0].LastName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Customers[0].BirthdayDate)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Customers)
+                {
+                    <tr class ="tableRow">
+                       
+                        <td>@Html.DisplayFor(modelItem => customer.FirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => customer.LastName)</td>
+                        <td>@Model.getDate(customer.BirthdayDate)</td>
+                        <td>
+                            <div>
+                                <a class="linkButton" asp-page="./Edit" asp-route-id="@customer.CustomerId">Edit</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <a class="linkButton" asp-page="./Delete" asp-route-id="@customer.CustomerId">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <div>
+        <a class="primaryButton" href="./Customers/Create">Create</a>
+    </div>
+</div>

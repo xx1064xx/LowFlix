@@ -1,0 +1,28 @@
+﻿@page
+@model LowFlix.Pages.FilmCopies.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>@ViewData["Title"] FilmCopy</h1>
+
+<div>
+    <div>
+        <form method="post">
+            <div class="formGroup">
+                <label asp-for="FilmCopy.FilmNumber">Customer</label>
+                <label class="inputField">@Model.FilmCopy.FilmNumber</label>
+            </div>
+            <div class="formGroup">
+                <label asp-for="FilmCopy.FilmTitle">Film</label>
+                <label class="inputField">@Model.FilmCopy.FilmTitle</label>
+            </div>
+            <div class="buttonGroup">
+                <input asp-for="FilmCopy.FilmCopyId" type="hidden" />
+                <input type="submit" value="Delete" class="btn dangerButton" />
+                <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>

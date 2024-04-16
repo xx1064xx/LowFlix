@@ -1,0 +1,41 @@
+﻿@page
+@model LowFlix.Pages.Customers.EditModel
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div>
+    <h1>Edit Customers</h1>
+
+    <div>
+        <div>
+            <form method="post">
+
+                <div class="formGroup">
+                    <label asp-for="Customer.FirstName">First Name</label>
+                    <input class="inputField" asp-for="Customer.FirstName" />
+                </div>
+                <div class="formGroup">
+                    <label asp-for="Customer.LastName">Last Name</label>
+                    <input class="inputField" asp-for="Customer.LastName" />
+                </div>
+                <div class="formGroup">
+                    <label asp-for="Customer.BirthdayDate">Birthday</label>
+                    <input class="inputField" asp-for="Customer.BirthdayDate" />
+                </div>
+                <div class="formGroup">
+                    <label asp-for="Customer.PhoneNumber">Phone</label>
+                    <input class="inputField" asp-for="Customer.PhoneNumber" />
+                </div>
+                <div class="buttonGroup">
+                    <input asp-for="Customer.CustomerId" type="hidden" />
+                    <input type="submit" value="Edit" class="btn primaryButton"/>
+                    <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>

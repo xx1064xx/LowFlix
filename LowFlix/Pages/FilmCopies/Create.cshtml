@@ -1,0 +1,28 @@
+﻿@page
+@model LowFlix.Pages.FilmCopies.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"] FilmCopy</h1>
+
+<div>
+    <div>
+        <form method="post">
+            <div class="formGroup">
+                <label asp-for="FilmCopy.FilmId">Film</label>
+                <select class="inputField" asp-for="FilmCopy.FilmId" asp-items="Model.FilmList"></select>
+            </div>
+            <div class="formGroup">
+                <label asp-for="FilmCopy.FilmNumber"></label>
+                <input class="inputField" asp-for="FilmCopy.FilmNumber" />
+            </div>
+            <div class="buttonGroup">
+                <input type="submit" value="Create" class="btn primaryButton" />
+                <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+

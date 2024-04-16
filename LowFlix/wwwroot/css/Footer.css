@@ -1,0 +1,18 @@
+﻿footer{
+    margin-top: 20px;
+}
+
+.footerDiv{
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 4rem;
+}
+
+.footerDiv a {
+    text-decoration: none;
+    color: darkolivegreen;
+}

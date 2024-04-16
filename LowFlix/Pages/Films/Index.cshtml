@@ -1,0 +1,49 @@
+﻿@page
+@model LowFlix.Pages.Films.IndexModel
+@{
+    ViewData["Title"] = "Films";
+}
+
+<div>
+    <h1>Films</h1>
+    <div class="tableContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Films[0].Title)</th>
+                    <th>@Html.DisplayNameFor(model => model.Films[0].Director)</th>
+                    <th>@Html.DisplayNameFor(model => model.Films[0].WatchTimeMinutes)</th>
+                    <th>@Html.DisplayNameFor(model => model.Films[0].Year)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Films)
+                {
+                    <tr class="tableRow">
+
+                        <td>@Html.DisplayFor(modelItem => customer.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => customer.Director)</td>
+                        <td>@Html.DisplayFor(modelItem => customer.WatchTimeMinutes)</td>
+                        <td>@Html.DisplayFor(modelItem => customer.Year)</td>
+                        <td>
+                            <div>
+                                <a class="linkButton" asp-page="./Edit" asp-route-id="@customer.FilmId">Edit</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <a class="linkButton" asp-page="./Delete" asp-route-id="@customer.FilmId">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <div>
+        <a class="primaryButton" href="./Films/Create">Create</a>
+    </div>
+</div>

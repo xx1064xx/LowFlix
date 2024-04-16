@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LowFlix</title>
+    
+    <link rel="stylesheet" href="~/css/General.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Header.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Footer.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Table.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/InputField.css" asp-append-version="true" />
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbarDiv">
+                <div class="navbarTop">
+                    <div class="lowFlixIndexLogo">
+                        <a asp-area="" asp-page="/Index">LowFlix</a>
+                    </div>
+                    <div class="hamburgerMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="navbarBottom" id="mobileNav">
+                    <ul>
+                        <li>
+                            <a asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/Bookings/Index">Bookings</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/Customers/Index">Customers</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/Films/Index">Films</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/FilmCopies/Index">Copys</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </nav>
+    </header>
+    
+    <main role="main" class="pb-3">
+        <div class="mainDiv">
+            @RenderBody()
+        </div>
+
+    </main>
+
+
+    <footer>
+        <div class="footerDiv">
+            <p>&copy; 2024 - LowFlix</p>
+            <a asp-area="" asp-page="/Privacy"> Privacy</a>
+        </div>
+    </footer>
+
+    <!--<script src="~/lib/jquery/dist/jquery.min.js"></script>-->
+
+    
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/hamburgerMenu.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
