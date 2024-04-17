@@ -14,8 +14,12 @@
                 <select class="inputField" asp-for="Booking.CustomerId" asp-items="Model.CustomerList"></select>
             </div>
             <div class="formGroup">
-                <label asp-for="Booking.FilmId">Film</label>
-                <select class="inputField" asp-for="Booking.FilmId" asp-items="Model.FilmList"></select>
+                <label>Film</label>
+                <select class="inputField" asp-items="Model.FilmList" id="FilmSelector"></select>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Booking.FilmCopyId">Film</label>
+                <select class="inputField" asp-for="Booking.FilmCopyId" id="FilmCopySelector"></select>
             </div>
             <div class="formGroup">
                 <label asp-for="Booking.RentalDate"></label>
@@ -29,3 +33,68 @@
 
     </div>
 </div>
+
+<script>
+
+    const filmSelector = document.getElementById('FilmSelector');
+    const filmCopySelector = document.getElementById('FilmCopySelector');
+    var pedaloData = null;
+    
+    filmSelector.addEventListener("change", function () {
+
+        
+        
+        filmCopySelector.innerHTML = '';
+
+        pedaloData.forEach(option => {
+
+            if (option.filmId == filmSelector.value.toLowerCase()) {
+
+                filmCopySelector.innerHTML += `<option value="${option.filmCopyId}">${option.filmNumber}</option>`;
+            }
+
+        });
+
+
+    });
+    
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        fetchressources();
+
+    });
+
+    function fetchressources() {
+        fetch('/Bookings/Create?handler=FilmCopyList')
+            .then(response => response.json())
+            .then(data => {
+
+                pedaloData = data;
+                console.log(data);
+
+
+                // fill options
+
+                filmCopySelector.innerHTML = '';
+
+                data.forEach(option => {
+                    
+                    if (option.filmId == filmSelector.value.toLowerCase()) {
+
+                        filmCopySelector.innerHTML += `<option value="${option.filmCopyId}">${option.filmNumber}</option>`;
+                    }
+
+                });
+
+
+
+
+
+            })
+            .catch(error => console.error('Error:', error));
+
+
+    }
+
+</script>

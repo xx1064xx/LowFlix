@@ -17,6 +17,7 @@ namespace LowFlix.Infrastructure.Data.EntityConfiguration
         {
             builder.HasKey(x => x.FilmCopyId);
             builder.HasKey(x => x.FilmId);
+            builder.Property(x => x.isAvailable).IsRequired();
         }
 
 

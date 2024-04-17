@@ -24,7 +24,7 @@
                     <thead>
                         <tr>
                             <th>@Html.DisplayNameFor(model => model.FilmCopies[0].FilmNumber)</th>
-                            
+                            <th>Verfügbarkeit</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -35,6 +35,7 @@
                                 <tr class="tableRow">
 
                                     <td>@Html.DisplayFor(modelItem => filmCopy.FilmNumber)</td>
+                                    <td>@Model.getAvailability(filmCopy.isAvailable)</td>
                                     <td>
                                         <div>
                                             <a class="linkButton" asp-page="./Delete" asp-route-id="@filmCopy.FilmCopyId">Delete</a>

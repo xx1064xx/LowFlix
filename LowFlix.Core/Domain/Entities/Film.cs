@@ -12,7 +12,6 @@ namespace LowFlix.Core.Domain.Entities
         public double WatchTimeMinutes { get; set; }
         public int Year { get; set; }
 
-        public ICollection<Booking> Bookings { get; set; }
         public ICollection<FilmCopy> FilmCopys { get; set; }
 
     }

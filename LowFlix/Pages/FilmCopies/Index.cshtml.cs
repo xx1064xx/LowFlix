@@ -30,5 +30,18 @@ namespace LowFlix.Pages.FilmCopies
                 .ToList();
             return this.Page();
         }
+
+        public string getAvailability(bool available)
+        {
+            if (available)
+            {
+                return "verfügbar";
+            }
+            else
+            {
+                return "ausgeliehen";
+            }
+        }
+
     }
 }

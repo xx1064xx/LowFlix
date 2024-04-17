@@ -18,11 +18,16 @@
                 <label class="inputField">@Model.Booking.FilmTitle</label>
             </div>
             <div class="formGroup">
+                <label asp-for="Booking.FilmNumber">Film</label>
+                <label class="inputField">@Model.Booking.FilmNumber</label>
+            </div>
+            <div class="formGroup">
                 <label asp-for="Booking.RentalDate">start date</label>
                 <label class="inputField">@Model.getDate(Model.Booking.RentalDate)</label>
             </div>
             <div class="buttonGroup">
                 <input asp-for="Booking.BookingId" type="hidden" />
+                <input asp-for="Booking.FilmCopyId" type="hidden" />
                 <input type="submit" value="Delete" class="btn dangerButton" />
                 <a asp-page="Index" class="btn secondaryButton">Cancel</a>
             </div>

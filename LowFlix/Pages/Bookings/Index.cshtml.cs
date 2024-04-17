@@ -25,7 +25,8 @@ namespace LowFlix.Pages.Bookings
             using var context = this.contextFactory.CreateReadOnlyContext();
             this.Bookings = context.Bookings
                 .Include(x => x.Customer)
-                .Include(x => x.Film)
+                .Include(x => x.FilmCopy)
+                .Include(x => x.FilmCopy.Film)
                 .ToList();
             return this.Page();
         }

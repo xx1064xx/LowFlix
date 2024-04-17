@@ -48,6 +48,8 @@ namespace LowFlix.Pages.Bookings
                 Text = a.Title,
             }).ToList();
 
+
+
         }
 
         public IActionResult OnPost()
@@ -58,29 +60,22 @@ namespace LowFlix.Pages.Bookings
             }
 
             using var context = this.contextFactory.CreateContext();
-            /*
-            Customer = context.Customers
-                .Where(m => m.CustomerId == Booking.CustomerId)
-                .Select(a =>
-
-                   new Customer
-                   {
-                       FirstName = a.FirstName,
-                       LastName = a.LastName
-                   })
-                .FirstOrDefault();
-            */
+            
             try
             {
 
                 var newBooking = new Booking
                 {
                     CustomerId = this.Booking.CustomerId,
-                    FilmId = this.Booking.FilmId,
+                    FilmCopyId = this.Booking.FilmCopyId,
                     RentalDate = this.Booking.RentalDate,
                 };
 
                 context.Bookings.Add(newBooking);
+
+                var filmCopy = context.FilmCopies.FirstOrDefault(fc => fc.FilmCopyId == newBooking.FilmCopyId);
+
+                filmCopy.isAvailable = false;
                 context.SaveChanges();
 
 
@@ -94,13 +89,34 @@ namespace LowFlix.Pages.Bookings
             return this.RedirectToPage("./Index");
 
         }
+
+        public IActionResult OnGetFilmCopyList()
+        {
+
+            using (var context = contextFactory.CreateReadOnlyContext())
+            {
+                var FilmCopyList = context.FilmCopies
+                    .Where(a => a.isAvailable)
+                    .Select(a =>
+                        new FilmCopy
+                        {
+                            FilmCopyId = a.FilmCopyId,
+                            FilmNumber = a.FilmNumber,
+                            FilmId = a.FilmId,
+                        })
+                    .ToList();
+
+                return new JsonResult(FilmCopyList);
+            }
+        }
+
     }
 
 
     public class BookingCreateModel
     {
         public Guid CustomerId { get; set; }
-        public Guid FilmId { get; set; }
+        public Guid FilmCopyId { get; set; }
         public DateTime RentalDate { get; set; }
     }
 

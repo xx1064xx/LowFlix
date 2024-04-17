@@ -15,7 +15,11 @@
             </div>
             <div class="formGroup">
                 <label asp-for="Booking.FilmId">Film</label>
-                <select class="inputField" asp-for="Booking.FilmId" asp-items="Model.FilmList"></select>
+                <select class="inputField" asp-for="Booking.FilmId" asp-items="Model.FilmList" id="FilmSelector"></select>
+            </div>
+            <div class="formGroup">
+                <label asp-for="Booking.FilmCopyId">Film</label>
+                <select class="inputField" asp-for="Booking.FilmCopyId" id="FilmCopySelector"></select>
             </div>
             <div class="formGroup">
                 <label asp-for="Booking.RentalDate"></label>
@@ -23,9 +27,98 @@
             </div>
             <div class="buttonGroup">
                 <input asp-for="Booking.BookingId" type="hidden" />
+                <input asp-for="Booking.OldFilmCopyId" type="hidden" />
+                <input value="@Model.Booking.FilmCopyId" type="hidden" id="originalFilmCopyId"/>
+                <input value="@Model.Booking.FilmNumber" type="hidden" id="originalFilmNumber" />
+                <input value="@Model.Booking.FilmId" type="hidden" id="originalFilmId" />
                 <input type="submit" value="Edit" class="btn primaryButton" />
                 <a asp-page="Index" class="btn secondaryButton">Cancel</a>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    
+    const filmSelector = document.getElementById('FilmSelector');
+    const filmCopySelector = document.getElementById('FilmCopySelector');
+
+    const originalFilmCopyId = document.getElementById('originalFilmCopyId');
+    const originalFilmNumber = document.getElementById('originalFilmNumber');
+    const originalFilmId = document.getElementById('originalFilmId');
+
+    var filmData = [];
+    
+    filmSelector.addEventListener("change", function () {
+
+
+
+        filmCopySelector.innerHTML = '';
+
+        filmData.forEach(option => {
+
+            if (option.filmId == filmSelector.value.toLowerCase()) {
+
+                filmCopySelector.innerHTML += `<option value="${option.filmCopyId}">${option.filmNumber}</option>`;
+            }
+
+        });
+
+
+    });
+    
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        fetchressources();
+
+    });
+
+
+
+    function fetchressources() {
+        fetch('/Bookings/Create?handler=FilmCopyList')
+            .then(response => response.json())
+            .then(data => {
+
+                filmData.push(...data);
+                console.log(data);
+
+                var oldFilmCopy = {
+                    filmCopyId: originalFilmCopyId.value,
+                    filmId: originalFilmId.value,
+                    filmNumber: parseInt(originalFilmNumber.value, 10),
+                    isAvailable: true,
+                    
+                };
+
+                
+                filmData.push(oldFilmCopy);
+
+                console.log(filmData);
+
+                // fill options
+                
+                filmCopySelector.innerHTML = '';
+
+                filmData.forEach(option => {
+
+                    if (option.filmId == filmSelector.value.toLowerCase()) {
+
+                        filmCopySelector.innerHTML += `<option value="${option.filmCopyId}">${option.filmNumber}</option>`;
+                    }
+
+                });
+
+                
+                
+
+
+
+            })
+            .catch(error => console.error('Error:', error));
+
+
+    }
+
+</script>

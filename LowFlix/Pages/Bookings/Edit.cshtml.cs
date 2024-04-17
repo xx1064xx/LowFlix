@@ -8,6 +8,9 @@ namespace LowFlix.Pages.Bookings
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using LowFlix.Core.Interfaces.Data;
+    using LowFlix.Core.Domain.Entities;
+    using Microsoft.EntityFrameworkCore;
+
     public class EditModel : PageModel
     {
         private readonly IDbContextFactory contextFactory;
@@ -46,14 +49,20 @@ namespace LowFlix.Pages.Bookings
 
             this.Booking = context.Bookings
                 .Where(m => m.BookingId == id)
+                .Include(x => x.FilmCopy)
                 .Select(x => new BookingEditModel
                 {
                     BookingId = x.BookingId,
                     CustomerId = x.CustomerId,
-                    FilmId = x.FilmId,
+                    FilmId = x.FilmCopy.FilmId,
+                    FilmCopyId = x.FilmCopyId,
+                    OldFilmCopyId = x.FilmCopyId,
+                    FilmNumber = x.FilmCopy.FilmNumber,
                     RentalDate = x.RentalDate
                 })
                 .FirstOrDefault();
+
+            
 
             if (this.Booking == null)
             {
@@ -82,8 +91,15 @@ namespace LowFlix.Pages.Bookings
             try
             {
                 booking.CustomerId = this.Booking.CustomerId;
-                booking.FilmId = this.Booking.FilmId;
+                booking.FilmCopyId = this.Booking.FilmCopyId;
                 booking.RentalDate = this.Booking.RentalDate;
+
+                var oldFilmCopy = context.FilmCopies.FirstOrDefault(fc => fc.FilmCopyId == this.Booking.OldFilmCopyId);
+                var newFilmCopy = context.FilmCopies.FirstOrDefault(fc => fc.FilmCopyId == this.Booking.FilmCopyId);
+
+                oldFilmCopy.isAvailable = true;
+                newFilmCopy.isAvailable = false;
+
 
                 context.SaveChanges();
             }
@@ -94,6 +110,30 @@ namespace LowFlix.Pages.Bookings
 
             return this.RedirectToPage("./Index");
         }
+
+        public IActionResult OnGetFilmCopyEditList()
+        {
+
+            using (var context = contextFactory.CreateReadOnlyContext())
+            {
+
+
+
+                var FilmCopyList = context.FilmCopies
+                    .Where(a => a.isAvailable)
+                    .Select(a =>
+                        new FilmCopy
+                        {
+                            FilmCopyId = a.FilmCopyId,
+                            FilmNumber = a.FilmNumber,
+                            FilmId = a.FilmId,
+                        })
+                    .ToList();
+
+                return new JsonResult(FilmCopyList);
+            }
+        }
+
     }
 
     public class BookingEditModel
@@ -101,6 +141,16 @@ namespace LowFlix.Pages.Bookings
         public Guid BookingId { get; set; }
         public Guid CustomerId { get; set; }
         public Guid FilmId { get; set; }
+        public Guid FilmCopyId { get; set; }
+        public Guid OldFilmCopyId { get; set; }
+        public long FilmNumber { get; set; }
         public DateTime RentalDate { get; set; }
+    }
+
+    public class OldFilmCopyEditModel
+    {
+        public Guid FilmCopyId { get; set; }
+        public long FilmNumber { get; set; }
+        public Guid FilmId { get; set; }
     }
 }

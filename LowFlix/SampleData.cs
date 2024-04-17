@@ -483,29 +483,45 @@ namespace LowFlix
                 Year = 1999
             };
             context.Add(film12);
-            context.Add(film12);
+            
             context.SaveChanges();
 
-            context.Bookings.Add(new Booking { CustomerId = customer1.CustomerId, FilmId = film2.FilmId, RentalDate = new DateTime(2024, 4, 15) });
-            context.Bookings.Add(new Booking { CustomerId = customer2.CustomerId, FilmId = film3.FilmId, RentalDate = new DateTime(2024, 4, 14) });
-            context.Bookings.Add(new Booking { CustomerId = customer3.CustomerId, FilmId = film4.FilmId, RentalDate = new DateTime(2024, 4, 10) });
-            context.Bookings.Add(new Booking { CustomerId = customer4.CustomerId, FilmId = film5.FilmId, RentalDate = new DateTime(2024, 4, 12) });
-            context.Bookings.Add(new Booking { CustomerId = customer5.CustomerId, FilmId = film6.FilmId, RentalDate = new DateTime(2024, 4, 15) });
-            context.Bookings.Add(new Booking { CustomerId = customer6.CustomerId, FilmId = film7.FilmId, RentalDate = new DateTime(2024, 4, 13) });
-            context.Bookings.Add(new Booking { CustomerId = customer7.CustomerId, FilmId = film8.FilmId, RentalDate = new DateTime(2024, 3, 23) });
+            var filmCopy1 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 123478243857, isAvailable = false };
+            var filmCopy2 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 859430830945, isAvailable = false };
+            var filmCopy3 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 215783145773, isAvailable = true };
+
+            var filmCopy4 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 891589895489, isAvailable = false };
+            var filmCopy5 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 349580943289, isAvailable = false };
+            var filmCopy6 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 342891789273, isAvailable = false };
+            var filmCopy7 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 092347587328, isAvailable = false };
+            var filmCopy8 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 029347172364, isAvailable = false };
+
+            var filmCopy9 = new FilmCopy { FilmId = film3.FilmId, FilmNumber = 923849330945, isAvailable = true };
+            var filmCopy10 = new FilmCopy { FilmId = film3.FilmId, FilmNumber = 034950934859, isAvailable = true };
+
+            context.FilmCopies.Add(filmCopy1);
+            context.FilmCopies.Add(filmCopy2);
+            context.FilmCopies.Add(filmCopy3);
+            context.FilmCopies.Add(filmCopy4);
+            context.FilmCopies.Add(filmCopy5);
+            context.FilmCopies.Add(filmCopy6);
+            context.FilmCopies.Add(filmCopy7);
+            context.FilmCopies.Add(filmCopy8);
+            context.FilmCopies.Add(filmCopy9);
+            context.FilmCopies.Add(filmCopy10);
+
             context.SaveChanges();
 
-            context.FilmCopies.Add(new FilmCopy { FilmId = film7.FilmId, FilmNumber = 123478243857});
-            context.FilmCopies.Add(new FilmCopy { FilmId = film7.FilmId, FilmNumber = 859430830945});
-            context.FilmCopies.Add(new FilmCopy { FilmId = film7.FilmId, FilmNumber = 215783145773});
-
-            context.FilmCopies.Add(new FilmCopy { FilmId = film5.FilmId, FilmNumber = 891589895489});
-            context.FilmCopies.Add(new FilmCopy { FilmId = film5.FilmId, FilmNumber = 349580943289});
-            context.FilmCopies.Add(new FilmCopy { FilmId = film5.FilmId, FilmNumber = 342891789273});
-            context.FilmCopies.Add(new FilmCopy { FilmId = film5.FilmId, FilmNumber = 092347587328});
-            context.FilmCopies.Add(new FilmCopy { FilmId = film5.FilmId, FilmNumber = 029347172364});
-
+            context.Bookings.Add(new Booking { CustomerId = customer1.CustomerId, FilmCopyId = filmCopy1.FilmCopyId, RentalDate = new DateTime(2024, 4, 15) });
+            context.Bookings.Add(new Booking { CustomerId = customer2.CustomerId, FilmCopyId = filmCopy2.FilmCopyId, RentalDate = new DateTime(2024, 4, 14) });
+            context.Bookings.Add(new Booking { CustomerId = customer3.CustomerId, FilmCopyId = filmCopy4.FilmCopyId, RentalDate = new DateTime(2024, 4, 10) });
+            context.Bookings.Add(new Booking { CustomerId = customer4.CustomerId, FilmCopyId = filmCopy8.FilmCopyId, RentalDate = new DateTime(2024, 4, 12) });
+            context.Bookings.Add(new Booking { CustomerId = customer5.CustomerId, FilmCopyId = filmCopy6.FilmCopyId, RentalDate = new DateTime(2024, 4, 15) });
+            context.Bookings.Add(new Booking { CustomerId = customer6.CustomerId, FilmCopyId = filmCopy5.FilmCopyId, RentalDate = new DateTime(2024, 4, 13) });
+            context.Bookings.Add(new Booking { CustomerId = customer7.CustomerId, FilmCopyId = filmCopy7.FilmCopyId, RentalDate = new DateTime(2024, 3, 23) });
             context.SaveChanges();
+
+            
         }
 
     }
