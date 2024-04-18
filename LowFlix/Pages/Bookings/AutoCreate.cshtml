@@ -1,0 +1,39 @@
+﻿@page
+@model LowFlix.Pages.Bookings.AutoCreateModel
+@{
+}
+
+<h1>Start Booking</h1>
+
+<div>
+    <div class="inputFormDiv">
+        <form method="post">
+            <div class="formGroup">
+                <label>Customer Number</label>
+                <label asp-for="Customer.CustomerNumber" class="inputField">@Model.Customer.CustomerNumber</label>
+            </div>
+            <div class="formGroup">
+                <label>Name</label>
+                <label class="inputField">@(Model.Customer.FirstName + " " + Model.Customer.LastName)</label>
+            </div>
+            <div class="formGroup">
+                <div class="inputCard">
+                    <label>Film number</label>
+                    <input Name="" class="inputCardField" id="filmCopyNumberInput" type="number"></input>
+                    <button type="button" id="addButton" onclick="addFilm()" class="btn primaryButton">enter</button>
+                    
+                </div>
+            </div>
+            <div id="movieAddFields">
+
+            </div>
+            <div class="buttonGroup">
+                <input asp-for="Customer.CustomerId" type="hidden"></input>
+                <button type="submit" class="btn primaryButton">Start</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/createBookingWithScanner.js" asp-append-version="true"></script>

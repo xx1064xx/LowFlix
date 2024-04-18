@@ -19,5 +19,24 @@
     outline: none;
     background-color: whitesmoke;
     padding: 5px;
-    border-radius:5px;
+    border-radius: 5px;
+}
+
+.inputCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    max-width: 500px;
+    width: 100%;
+    background-color: navajowhite;
+    border-radius: 5px;
+}
+.inputCardField {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: whitesmoke;
+    padding: 5px;
+    border-radius: 5px;
 }

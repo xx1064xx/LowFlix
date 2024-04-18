@@ -1,0 +1,15 @@
+﻿.twoCardSpacingDiv{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.cardDiv{
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+    background-color: navajowhite;
+    border-radius: 10px;
+
+}
+

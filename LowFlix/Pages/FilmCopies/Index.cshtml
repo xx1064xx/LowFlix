@@ -35,7 +35,7 @@
                                 <tr class="tableRow">
 
                                     <td>@Html.DisplayFor(modelItem => filmCopy.FilmNumber)</td>
-                                    <td>@Model.getAvailability(filmCopy.isAvailable)</td>
+                                    <td>@Model.getAvailability(filmCopy.BookingId)</td>
                                     <td>
                                         <div>
                                             <a class="linkButton" asp-page="./Delete" asp-route-id="@filmCopy.FilmCopyId">Delete</a>

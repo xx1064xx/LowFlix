@@ -18,6 +18,9 @@ namespace LowFlix.Pages
             this.contextFactory = contextFactory;
         }
 
+        [BindProperty]  
+        public Customer Customer { get; set; }
+
         public IReadOnlyList<Booking> Bookings { get; set; }
 
         public IActionResult OnGet()
@@ -30,12 +33,17 @@ namespace LowFlix.Pages
                 this.Bookings = context.Bookings
                     .Where(x => x.RentalDate < cutoffDate)
                     .Include(x => x.Customer)
-                    .Include(x => x.FilmCopy)
-                    .Include(x => x.FilmCopy.Film)
                     .ToList();
             }
             return this.Page();
         }
+
+        public IActionResult OnPost()
+        {
+
+            return this.RedirectToPage("./Bookings/AutoCreate", new { number = Customer.CustomerNumber });
+        }
+
         public string getDate(DateTime? dateTime)
         {
             if (dateTime.HasValue)

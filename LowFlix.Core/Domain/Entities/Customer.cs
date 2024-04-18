@@ -6,6 +6,7 @@ namespace LowFlix.Core.Domain.Entities
     public class Customer
     {
         public Guid CustomerId { get; set; } = Guid.NewGuid();
+        public long CustomerNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthdayDate { get; set; }

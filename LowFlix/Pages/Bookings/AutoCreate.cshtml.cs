@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LowFlix.Pages.Bookings
 {
@@ -14,68 +16,74 @@ namespace LowFlix.Pages.Bookings
     using LowFlix.Core.Interfaces.Data;
     using System.Text;
     using Microsoft.Extensions.Configuration;
-    public class CreateModel : PageModel
+    using LowFlix.Pages.Films;
+
+    public class AutoCreateModel : PageModel
     {
         private readonly IDbContextFactory contextFactory;
 
-        public CreateModel(IDbContextFactory contextFactory, IConfiguration configuration)
+        public AutoCreateModel(IDbContextFactory contextFactory, IConfiguration configuration)
         {
             this.contextFactory = contextFactory;
         }
 
         [BindProperty]
-        public BookingCreateModel Booking { get; set; }
-        [BindProperty]
-        public List<SelectListItem> CustomerList { get; set; } = new List<SelectListItem>();
-        [BindProperty]
-        public List<SelectListItem> FilmList { get; set; } = new List<SelectListItem>();
+        public Customer Customer { get; set; }
 
-        public void OnGet()
+        [BindProperty]
+        public List<FilmCopyBookingStart> FilmCopies { get; set; } = new List<FilmCopyBookingStart>();
+
+        public void OnGet(long number)
         {
+
             using var context = this.contextFactory.CreateReadOnlyContext();
+            this.Customer = context.Customers
+                .Where(m => m.CustomerNumber == number)
+                .Select(x => new Customer
+                {
+                    CustomerId = x.CustomerId,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    CustomerNumber = x.CustomerNumber,
 
-            CustomerList = context.Customers.Select(a =>
-            new SelectListItem
-            {
-                Value = a.CustomerId.ToString(),
-                Text = a.FirstName + " " + a.LastName,
-            }).ToList();
-
-            FilmList = context.Films.Select(a =>
-            new SelectListItem
-            {
-                Value = a.FilmId.ToString(),
-                Text = a.Title,
-            }).ToList();
-
-
+                })
+                .FirstOrDefault();
 
         }
 
         public IActionResult OnPost()
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.Page();
-            }
 
+          
             using var context = this.contextFactory.CreateContext();
-            
+
             try
             {
 
                 var newBooking = new Booking
                 {
-                    CustomerId = this.Booking.CustomerId,
-                    
-                    RentalDate = this.Booking.RentalDate,
+                    CustomerId = this.Customer.CustomerId,
+                    RentalDate = DateTime.Now,
                 };
 
                 context.Bookings.Add(newBooking);
 
-                
                 context.SaveChanges();
 
+                foreach (var filmcopy in  FilmCopies)
+                {
+                    var filmcopyFromDb = context.FilmCopies.FirstOrDefault(x => x.FilmNumber == long.Parse(filmcopy.FilmCopyNumber));
+
+                    if (filmcopyFromDb == null)
+                    {
+                        return this.NotFound();
+                    }
+
+                    filmcopyFromDb.BookingId = newBooking.BookingId;
+
+                    context.SaveChanges();
+
+                }
 
 
             }
@@ -108,14 +116,12 @@ namespace LowFlix.Pages.Bookings
             }
         }
 
+
+
     }
 
-
-    public class BookingCreateModel
+    public class FilmCopyBookingStart
     {
-        public Guid CustomerId { get; set; }
-        public Guid FilmCopyId { get; set; }
-        public DateTime RentalDate { get; set; }
+        public string FilmCopyNumber { get; set; }
     }
-
 }

@@ -49,15 +49,11 @@ namespace LowFlix.Pages.Bookings
 
             this.Booking = context.Bookings
                 .Where(m => m.BookingId == id)
-                .Include(x => x.FilmCopy)
                 .Select(x => new BookingEditModel
                 {
                     BookingId = x.BookingId,
                     CustomerId = x.CustomerId,
-                    FilmId = x.FilmCopy.FilmId,
-                    FilmCopyId = x.FilmCopyId,
-                    OldFilmCopyId = x.FilmCopyId,
-                    FilmNumber = x.FilmCopy.FilmNumber,
+                    
                     RentalDate = x.RentalDate
                 })
                 .FirstOrDefault();
@@ -91,14 +87,12 @@ namespace LowFlix.Pages.Bookings
             try
             {
                 booking.CustomerId = this.Booking.CustomerId;
-                booking.FilmCopyId = this.Booking.FilmCopyId;
+                
                 booking.RentalDate = this.Booking.RentalDate;
 
-                var oldFilmCopy = context.FilmCopies.FirstOrDefault(fc => fc.FilmCopyId == this.Booking.OldFilmCopyId);
-                var newFilmCopy = context.FilmCopies.FirstOrDefault(fc => fc.FilmCopyId == this.Booking.FilmCopyId);
+                
 
-                oldFilmCopy.isAvailable = true;
-                newFilmCopy.isAvailable = false;
+                
 
 
                 context.SaveChanges();
@@ -120,7 +114,7 @@ namespace LowFlix.Pages.Bookings
 
 
                 var FilmCopyList = context.FilmCopies
-                    .Where(a => a.isAvailable)
+                    .Where(a => a.BookingId == null)
                     .Select(a =>
                         new FilmCopy
                         {

@@ -13,8 +13,7 @@
                 <th>
                     Customer Name
                 </th>
-                <th>@Html.DisplayNameFor(model => model.Bookings[0].FilmCopy.Film.Title)</th>
-                <th>@Html.DisplayNameFor(model => model.Bookings[0].FilmCopy.FilmNumber)</th>
+                
                 <th>@Html.DisplayNameFor(model => model.Bookings[0].RentalDate)</th>
                 <th></th>
                 <th></th>
@@ -29,8 +28,7 @@
                         @Html.DisplayFor(modelItem => booking.Customer.FirstName)
                         @Html.DisplayFor(modelItem => booking.Customer.LastName)
                     </td>
-                    <td>@Html.DisplayFor(modelItem => booking.FilmCopy.Film.Title)</td>
-                    <td>@Html.DisplayFor(modelItem => booking.FilmCopy.FilmNumber)</td>
+                    
                     <td>@Model.getDate(booking.RentalDate)</td>
                     <td>
                         <div>
@@ -48,3 +46,44 @@
     </table>
 
 </div>
+
+<div class="twoCardSpacingDiv">
+    <div class="cardDiv">
+        <h1>Start Booking</h1>
+
+        <div>
+            <div class="inputFormDiv">
+                <form method="post">
+                    <div class="formGroup">
+                        <label asp-for="Customer.CustomerNumber"></label>
+                        <input asp-for="Customer.CustomerNumber" class="inputField" maxlength="10" />
+                    </div>
+                    <div class="buttonGroup">
+
+                        <button type="submit" class="btn primaryButton">Start</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="cardDiv">
+        <h1>Return Booking</h1>
+
+        <div>
+            <div class="inputFormDiv">
+                <form method="post">
+                    <div class="formGroup">
+                        <label asp-for="Customer.FirstName">Customer Number</label>
+                        <input asp-for="Customer.FirstName" class="inputField" maxlength="10" />
+                    </div>
+                    <div class="buttonGroup">
+                        <input type="submit" value="Start" class="btn primaryButton" />
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

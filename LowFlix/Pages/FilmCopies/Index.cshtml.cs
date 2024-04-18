@@ -31,9 +31,9 @@ namespace LowFlix.Pages.FilmCopies
             return this.Page();
         }
 
-        public string getAvailability(bool available)
+        public string getAvailability(Guid? id)
         {
-            if (available)
+            if (id == null)
             {
                 return "verfügbar";
             }

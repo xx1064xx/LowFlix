@@ -12,6 +12,7 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Customers[0].FirstName)</th>
                     <th>@Html.DisplayNameFor(model => model.Customers[0].LastName)</th>
+                    <th>@Html.DisplayNameFor(model => model.Customers[0].CustomerNumber)</th>
                     <th>@Html.DisplayNameFor(model => model.Customers[0].BirthdayDate)</th>
                     <th></th>
                     <th></th>
@@ -24,6 +25,7 @@
                        
                         <td>@Html.DisplayFor(modelItem => customer.FirstName)</td>
                         <td>@Html.DisplayFor(modelItem => customer.LastName)</td>
+                        <td>@Html.DisplayFor(modelItem => customer.CustomerNumber)</td>
                         <td>@Model.getDate(customer.BirthdayDate)</td>
                         <td>
                             <div>

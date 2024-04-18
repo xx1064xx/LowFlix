@@ -23,6 +23,7 @@ namespace LowFlix.Pages.Bookings
 
         [BindProperty]
         public BookingDeleteModel Booking { get; set; }
+        public List<FilmCopy> FilmCopies { get; set; } = new List<FilmCopy>();
 
         public IActionResult OnGet(Guid? id)
         {
@@ -34,16 +35,12 @@ namespace LowFlix.Pages.Bookings
             using var context = this.contextFactory.CreateReadOnlyContext();
             this.Booking = context.Bookings
                 .Where(m => m.BookingId == id)
-                .Include(x => x.FilmCopy)
-                .Include(x => x.FilmCopy.Film)
                 .Select(x => new BookingDeleteModel
                 {
                     BookingId = x.BookingId,
-                    FilmCopyId = x.FilmCopyId,
                     RentalDate = x.RentalDate,
-                    FilmNumber = x.FilmCopy.FilmNumber,
                     CustomerName = context.Customers.Where(c => c.CustomerId == x.CustomerId).FirstOrDefault().FirstName,
-                    FilmTitle = x.FilmCopy.Film.Title,
+                    
 
                 })
                 .FirstOrDefault();
@@ -65,7 +62,28 @@ namespace LowFlix.Pages.Bookings
 
             using (var context = contextFactory.CreateContext())
             {
-                var BookingToDelete = context.Bookings.FirstOrDefault(x => x.BookingId == Booking.BookingId);
+                FilmCopies = context.FilmCopies
+                    .Where(m => m.BookingId == Booking.BookingId)
+                    .ToList();
+
+
+                foreach (var filmcopy in FilmCopies)
+                {
+                    var filmcopyFromDb = context.FilmCopies.FirstOrDefault(x => x.FilmNumber == filmcopy.FilmNumber);
+
+                    if (filmcopyFromDb == null)
+                    {
+                        return this.NotFound();
+                    }
+
+                    filmcopyFromDb.BookingId = null;
+
+                    context.SaveChanges();
+
+                }
+
+
+                var BookingToDelete = context.Bookings.FirstOrDefault(x => x.BookingId == this.Booking.BookingId);
                 if (BookingToDelete == null)
                 {
                     return NotFound();
@@ -73,11 +91,12 @@ namespace LowFlix.Pages.Bookings
 
                 context.Bookings.Remove(BookingToDelete);
 
-                var FilmCopyToChange = context.FilmCopies.FirstOrDefault(x => x.FilmCopyId == Booking.FilmCopyId);
-
-                FilmCopyToChange.isAvailable = true;
-
                 context.SaveChanges();
+
+
+                
+                
+                
 
             }
 
@@ -95,10 +114,7 @@ namespace LowFlix.Pages.Bookings
     public class BookingDeleteModel
     {
         public Guid BookingId { get; set; }
-        public Guid FilmCopyId { get; set; }
         public DateTime RentalDate { get; set; }
-        public long FilmNumber { get; set; }
         public string CustomerName { get; set; }
-        public string FilmTitle { get; set; }
     }
 }

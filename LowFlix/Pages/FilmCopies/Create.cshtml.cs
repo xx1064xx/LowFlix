@@ -49,7 +49,7 @@ namespace LowFlix.Pages.FilmCopies
                     {
                         FilmId = this.FilmCopy.FilmId,
                         FilmNumber = this.FilmCopy.FilmNumber,
-                        isAvailable = true
+                        
                     };
 
                     context.FilmCopies.Add(newFilmCopy);

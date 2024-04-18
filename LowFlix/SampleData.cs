@@ -27,6 +27,7 @@ namespace LowFlix
 
             var customer1 = new Customer
             {
+                CustomerNumber = 9203839402,
                 FirstName = "Mauro",
                 LastName = "Meier",
                 BirthdayDate = new DateTime(2005, 9, 20),
@@ -36,6 +37,7 @@ namespace LowFlix
 
             var customer2 = new Customer
             {
+                CustomerNumber = 2030922853,
                 FirstName = "Alice",
                 LastName = "Smith",
                 BirthdayDate = new DateTime(1985, 10, 25),
@@ -45,6 +47,7 @@ namespace LowFlix
 
             var customer3 = new Customer
             {
+                CustomerNumber = 8887503849,
                 FirstName = "Bob",
                 LastName = "Johnson",
                 BirthdayDate = new DateTime(1978, 3, 8),
@@ -54,6 +57,7 @@ namespace LowFlix
 
             var customer4 = new Customer
             {
+                CustomerNumber = 1203475947,
                 FirstName = "Emily",
                 LastName = "Davis",
                 BirthdayDate = new DateTime(1983, 12, 10),
@@ -63,6 +67,7 @@ namespace LowFlix
 
             var customer5 = new Customer
             {
+                CustomerNumber = 3339483222,
                 FirstName = "Sophia",
                 LastName = "Wilson",
                 BirthdayDate = new DateTime(1976, 8, 5),
@@ -72,6 +77,7 @@ namespace LowFlix
 
             var customer6 = new Customer
             {
+                CustomerNumber = 2287876584,
                 FirstName = "David",
                 LastName = "Brown",
                 BirthdayDate = new DateTime(1995, 2, 28),
@@ -81,6 +87,7 @@ namespace LowFlix
 
             var customer7 = new Customer
             {
+                CustomerNumber = 1102032234,
                 FirstName = "Emma",
                 LastName = "Johnson",
                 BirthdayDate = new DateTime(1992, 7, 12),
@@ -90,6 +97,7 @@ namespace LowFlix
 
             var customer8 = new Customer
             {
+                CustomerNumber = 1188756443,
                 FirstName = "Michael",
                 LastName = "Miller",
                 BirthdayDate = new DateTime(1980, 4, 18),
@@ -99,6 +107,7 @@ namespace LowFlix
 
             var customer9 = new Customer
             {
+                CustomerNumber = 3348757483,
                 FirstName = "Olivia",
                 LastName = "Wilson",
                 BirthdayDate = new DateTime(1973, 9, 30),
@@ -108,6 +117,7 @@ namespace LowFlix
 
             var customer11 = new Customer
             {
+                CustomerNumber = 2234987653,
                 FirstName = "Liam",
                 LastName = "Jones",
                 BirthdayDate = new DateTime(1998, 6, 15),
@@ -117,6 +127,7 @@ namespace LowFlix
 
             var customer12 = new Customer
             {
+                CustomerNumber = 2300909876,
                 FirstName = "Ava",
                 LastName = "Brown",
                 BirthdayDate = new DateTime(2000, 4, 20),
@@ -126,6 +137,7 @@ namespace LowFlix
 
             var customer13 = new Customer
             {
+                CustomerNumber = 3348769584,
                 FirstName = "Noah",
                 LastName = "Garcia",
                 BirthdayDate = new DateTime(1993, 11, 5),
@@ -135,6 +147,7 @@ namespace LowFlix
 
             var customer14 = new Customer
             {
+                CustomerNumber = 3495048943,
                 FirstName = "Isabella",
                 LastName = "Martinez",
                 BirthdayDate = new DateTime(1987, 8, 12),
@@ -144,6 +157,7 @@ namespace LowFlix
 
             var customer15 = new Customer
             {
+                CustomerNumber = 6767685943,
                 FirstName = "William",
                 LastName = "Lopez",
                 BirthdayDate = new DateTime(1982, 3, 25),
@@ -153,6 +167,7 @@ namespace LowFlix
 
             var customer16 = new Customer
             {
+                CustomerNumber = 3988765748,
                 FirstName = "Mia",
                 LastName = "Hernandez",
                 BirthdayDate = new DateTime(1975, 9, 8),
@@ -162,6 +177,7 @@ namespace LowFlix
 
             var customer17 = new Customer
             {
+                CustomerNumber = 2000009837,
                 FirstName = "James",
                 LastName = "Young",
                 BirthdayDate = new DateTime(1989, 7, 30),
@@ -171,6 +187,7 @@ namespace LowFlix
 
             var customer18 = new Customer
             {
+                CustomerNumber = 2333336574,
                 FirstName = "Charlotte",
                 LastName = "Scott",
                 BirthdayDate = new DateTime(1984, 2, 10),
@@ -180,6 +197,7 @@ namespace LowFlix
 
             var customer19 = new Customer
             {
+                CustomerNumber = 8978657343,
                 FirstName = "Logan",
                 LastName = "King",
                 BirthdayDate = new DateTime(1970, 5, 22),
@@ -189,6 +207,7 @@ namespace LowFlix
 
             var customer20 = new Customer
             {
+                CustomerNumber = 9894750323,
                 FirstName = "Ella",
                 LastName = "Gonzalez",
                 BirthdayDate = new DateTime(1996, 12, 18),
@@ -196,185 +215,6 @@ namespace LowFlix
             };
             context.Add(customer20);
 
-            var customer21 = new Customer
-            {
-                FirstName = "Alexander",
-                LastName = "Lee",
-                BirthdayDate = new DateTime(1988, 10, 8),
-                PhoneNumber = "+41555555021"
-            };
-            context.Add(customer21);
-
-            var customer22 = new Customer
-            {
-                FirstName = "Grace",
-                LastName = "Clark",
-                BirthdayDate = new DateTime(1991, 5, 12),
-                PhoneNumber = "+41555555022"
-            };
-            context.Add(customer22);
-
-            var customer23 = new Customer
-            {
-                FirstName = "Lucas",
-                LastName = "Lewis",
-                BirthdayDate = new DateTime(1983, 8, 30),
-                PhoneNumber = "+41555555023"
-            };
-            context.Add(customer23);
-
-            var customer24 = new Customer
-            {
-                FirstName = "Chloe",
-                LastName = "Baker",
-                BirthdayDate = new DateTime(1977, 12, 5),
-                PhoneNumber = "+41555555024"
-            };
-            context.Add(customer24);
-
-            var customer25 = new Customer
-            {
-                FirstName = "Benjamin",
-                LastName = "Hill",
-                BirthdayDate = new DateTime(1974, 3, 18),
-                PhoneNumber = "+41555555025"
-            };
-            context.Add(customer25);
-
-            var customer26 = new Customer
-            {
-                FirstName = "Zoe",
-                LastName = "Wright",
-                BirthdayDate = new DateTime(1997, 7, 22),
-                PhoneNumber = "+41555555026"
-            };
-            context.Add(customer26);
-
-            var customer27 = new Customer
-            {
-                FirstName = "Ethan",
-                LastName = "Adams",
-                BirthdayDate = new DateTime(1980, 9, 14),
-                PhoneNumber = "+41555555027"
-            };
-            context.Add(customer27);
-
-            var customer28 = new Customer
-            {
-                FirstName = "Madison",
-                LastName = "Green",
-                BirthdayDate = new DateTime(1986, 4, 28),
-                PhoneNumber = "+41555555028"
-            };
-            context.Add(customer28);
-
-            var customer29 = new Customer
-            {
-                FirstName = "Henry",
-                LastName = "Russell",
-                BirthdayDate = new DateTime(1979, 1, 7),
-                PhoneNumber = "+41555555029"
-            };
-            context.Add(customer29);
-
-            var customer30 = new Customer
-            {
-                FirstName = "Lily",
-                LastName = "Morris",
-                BirthdayDate = new DateTime(1981, 6, 10),
-                PhoneNumber = "+41555555030"
-            };
-            context.Add(customer30);
-
-            var customer31 = new Customer
-            {
-                FirstName = "Jacob",
-                LastName = "Sullivan",
-                BirthdayDate = new DateTime(1990, 11, 19),
-                PhoneNumber = "+41555555031"
-            };
-            context.Add(customer31);
-
-            var customer32 = new Customer
-            {
-                FirstName = "Natalie",
-                LastName = "Ross",
-                BirthdayDate = new DateTime(1972, 2, 27),
-                PhoneNumber = "+41555555032"
-            };
-            context.Add(customer32);
-
-            var customer33 = new Customer
-            {
-                FirstName = "Daniel",
-                LastName = "Coleman",
-                BirthdayDate = new DateTime(1984, 8, 3),
-                PhoneNumber = "+41555555033"
-            };
-            context.Add(customer33);
-
-            var customer34 = new Customer
-            {
-                FirstName = "Avery",
-                LastName = "Barnes",
-                BirthdayDate = new DateTime(1995, 4, 14),
-                PhoneNumber = "+41555555034"
-            };
-            context.Add(customer34);
-
-            var customer35 = new Customer
-            {
-                FirstName = "Jackson",
-                LastName = "Edwards",
-                BirthdayDate = new DateTime(1987, 12, 21),
-                PhoneNumber = "+41555555035"
-            };
-            context.Add(customer35);
-
-            var customer36 = new Customer
-            {
-                FirstName = "Hannah",
-                LastName = "Fisher",
-                BirthdayDate = new DateTime(1976, 10, 2),
-                PhoneNumber = "+41555555036"
-            };
-            context.Add(customer36);
-
-            var customer37 = new Customer
-            {
-                FirstName = "Sebastian",
-                LastName = "Kelly",
-                BirthdayDate = new DateTime(1982, 5, 16),
-                PhoneNumber = "+41555555037"
-            };
-            context.Add(customer37);
-
-            var customer38 = new Customer
-            {
-                FirstName = "Aria",
-                LastName = "Phillips",
-                BirthdayDate = new DateTime(1973, 9, 29),
-                PhoneNumber = "+41555555038"
-            };
-            context.Add(customer38);
-
-            var customer39 = new Customer
-            {
-                FirstName = "Gabriel",
-                LastName = "Richardson",
-                BirthdayDate = new DateTime(1998, 3, 4),
-                PhoneNumber = "+41555555039"
-            };
-            context.Add(customer39);
-
-            var customer40 = new Customer
-            {
-                FirstName = "Mila",
-                LastName = "Carter",
-                BirthdayDate = new DateTime(1971, 7, 11),
-                PhoneNumber = "+41555555040"
-            };
-            context.Add(customer40);
 
             var film1 = new Film
             {
@@ -483,21 +323,40 @@ namespace LowFlix
                 Year = 1999
             };
             context.Add(film12);
+
+            context.SaveChanges();
+
+            var booking1 = new Booking { CustomerId = customer1.CustomerId, RentalDate = new DateTime(2024, 4, 15) };
+            var booking2 = new Booking { CustomerId = customer2.CustomerId, RentalDate = new DateTime(2024, 4, 14) };
+            var booking3 = new Booking { CustomerId = customer3.CustomerId, RentalDate = new DateTime(2024, 4, 10) };
+            var booking4 = new Booking { CustomerId = customer4.CustomerId, RentalDate = new DateTime(2024, 4, 12) };
+            var booking5 = new Booking { CustomerId = customer5.CustomerId, RentalDate = new DateTime(2024, 4, 15) };
+            var booking6 = new Booking { CustomerId = customer6.CustomerId, RentalDate = new DateTime(2024, 4, 13) };
+            var booking7 = new Booking { CustomerId = customer7.CustomerId, RentalDate = new DateTime(2024, 3, 23) };
+
+            context.Bookings.Add(booking1);
+            context.Bookings.Add(booking2);
+            context.Bookings.Add(booking3);
+            context.Bookings.Add(booking4);
+            context.Bookings.Add(booking5);
+            context.Bookings.Add(booking6);
+            context.Bookings.Add(booking7);
+            
             
             context.SaveChanges();
 
-            var filmCopy1 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 123478243857, isAvailable = false };
-            var filmCopy2 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 859430830945, isAvailable = false };
-            var filmCopy3 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 215783145773, isAvailable = true };
+            var filmCopy1 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 123478243857, BookingId = booking1.BookingId};
+            var filmCopy2 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 859430830945, BookingId = null };
+            var filmCopy3 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 215783145773, BookingId = booking4.BookingId };
 
-            var filmCopy4 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 891589895489, isAvailable = false };
-            var filmCopy5 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 349580943289, isAvailable = false };
-            var filmCopy6 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 342891789273, isAvailable = false };
-            var filmCopy7 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 092347587328, isAvailable = false };
-            var filmCopy8 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 029347172364, isAvailable = false };
+            var filmCopy4 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 891589895489, BookingId = null};
+            var filmCopy5 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 349580943289, BookingId = booking2.BookingId};
+            var filmCopy6 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 342891789273, BookingId = null };
+            var filmCopy7 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 092347587328, BookingId = booking4.BookingId};
+            var filmCopy8 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 029347172364, BookingId = booking1.BookingId };
 
-            var filmCopy9 = new FilmCopy { FilmId = film3.FilmId, FilmNumber = 923849330945, isAvailable = true };
-            var filmCopy10 = new FilmCopy { FilmId = film3.FilmId, FilmNumber = 034950934859, isAvailable = true };
+            var filmCopy9 = new FilmCopy { FilmId = film3.FilmId, FilmNumber = 923849330945, BookingId = booking7.BookingId };
+            var filmCopy10 = new FilmCopy { FilmId = film3.FilmId, FilmNumber = 034950934859, BookingId = booking4.BookingId };
 
             context.FilmCopies.Add(filmCopy1);
             context.FilmCopies.Add(filmCopy2);
@@ -512,14 +371,7 @@ namespace LowFlix
 
             context.SaveChanges();
 
-            context.Bookings.Add(new Booking { CustomerId = customer1.CustomerId, FilmCopyId = filmCopy1.FilmCopyId, RentalDate = new DateTime(2024, 4, 15) });
-            context.Bookings.Add(new Booking { CustomerId = customer2.CustomerId, FilmCopyId = filmCopy2.FilmCopyId, RentalDate = new DateTime(2024, 4, 14) });
-            context.Bookings.Add(new Booking { CustomerId = customer3.CustomerId, FilmCopyId = filmCopy4.FilmCopyId, RentalDate = new DateTime(2024, 4, 10) });
-            context.Bookings.Add(new Booking { CustomerId = customer4.CustomerId, FilmCopyId = filmCopy8.FilmCopyId, RentalDate = new DateTime(2024, 4, 12) });
-            context.Bookings.Add(new Booking { CustomerId = customer5.CustomerId, FilmCopyId = filmCopy6.FilmCopyId, RentalDate = new DateTime(2024, 4, 15) });
-            context.Bookings.Add(new Booking { CustomerId = customer6.CustomerId, FilmCopyId = filmCopy5.FilmCopyId, RentalDate = new DateTime(2024, 4, 13) });
-            context.Bookings.Add(new Booking { CustomerId = customer7.CustomerId, FilmCopyId = filmCopy7.FilmCopyId, RentalDate = new DateTime(2024, 3, 23) });
-            context.SaveChanges();
+            
 
             
         }

@@ -11,11 +11,11 @@ namespace LowFlix.Core.Domain.Entities
 
         public Guid FilmCopyId { get; set; } = Guid.NewGuid();
         public long FilmNumber { get; set; }
-        public Boolean isAvailable { get; set; }
+        public Guid? BookingId { get; set; }
         public Guid FilmId { get; set; }
 
         public Film Film {  get; set; }
-        public ICollection<Booking> Bookings { get; set; }
+        public Booking Booking { get; set; }
 
     }
 }
