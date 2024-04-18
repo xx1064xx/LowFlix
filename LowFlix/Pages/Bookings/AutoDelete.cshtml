@@ -1,0 +1,74 @@
+﻿@page
+@model LowFlix.Pages.Bookings.AutoDeleteModel
+@{
+}
+
+<h1>Bookings</h1>
+
+<div>
+    <div class="inputFormDiv">
+        <form method="post">
+            <div class="formGroup">
+                <label>Customer Number</label>
+                <label asp-for="Customer.CustomerNumber" class="inputField">@Model.Customer.CustomerNumber</label>
+            </div>
+            <div class="formGroup">
+                <label>Name</label>
+                <label class="inputField">@(Model.Customer.FirstName + " " + Model.Customer.LastName)</label>
+            </div>
+            <div class="formGroup">
+                <div class="inputCard">
+                    <label>Film number</label>
+                    <input Name="" class="inputCardField" id="filmCopyNumberInput" type="number"></input>
+                    <button type="button" id="removeButton" onclick="removeFilm()" class="btn primaryButton">enter</button>
+
+                </div>
+            </div>
+            @foreach(var booking in Model.Bookings)
+            {
+                <h2>@Model.getDate(booking.RentalDate)</h2>
+
+                <div class="tableContainer">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Film Number</th>
+                                <th>Film Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var filmCopy in Model.OldFilmCopies)
+                            {
+                                if (filmCopy.BookingId == booking.BookingId)
+                                {
+                                    <tr class="tableRow">
+
+                                        <td class="filmNumberField">@Html.DisplayFor(modelItem => filmCopy.FilmNumber)</td>
+                                        <td>@Html.DisplayFor(modelItem => filmCopy.FilmTitle)</td>
+
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            }
+            <div class="buttonGroup" >
+                <input asp-for="Customer.CustomerId" type="hidden"></input>
+                @for (int i = 0; i < Model.OldFilmCopies.Count; i++)
+                {
+                    <input asp-for="OldFilmCopies[i].FilmNumber" type="hidden"></input>
+                }
+
+                <button type="submit" class="btn primaryButton">Start</button>
+
+            </div>
+            <div id="typeHiddenSpace">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/returnBookingWithScanner.js"></script>

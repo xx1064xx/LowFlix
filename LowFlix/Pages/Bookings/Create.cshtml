@@ -18,12 +18,19 @@
                 <select class="inputField" asp-items="Model.FilmList" id="FilmSelector"></select>
             </div>
             <div class="formGroup">
-                <label asp-for="Booking.FilmCopyId">Film</label>
-                <select class="inputField" asp-for="Booking.FilmCopyId" id="FilmCopySelector"></select>
-            </div>
-            <div class="formGroup">
                 <label asp-for="Booking.RentalDate"></label>
                 <input class="inputField" asp-for="Booking.RentalDate" />
+            </div>
+            <div class="formGroup">
+                <div class="inputCard">
+                    <label>Film number</label>
+                    <select class="inputCardField" id="FilmCopySelector"></select>
+                    <button type="button" id="addButton" onclick="addFilm()" class="btn primaryButton">enter</button>
+
+                </div>
+            </div>
+            <div id="addFieldDiv">
+
             </div>
             <div class="buttonGroup">
                 <input type="submit" value="Create" class="btn primaryButton"/>
@@ -34,67 +41,4 @@
     </div>
 </div>
 
-<script>
-
-    const filmSelector = document.getElementById('FilmSelector');
-    const filmCopySelector = document.getElementById('FilmCopySelector');
-    var pedaloData = null;
-    
-    filmSelector.addEventListener("change", function () {
-
-        
-        
-        filmCopySelector.innerHTML = '';
-
-        pedaloData.forEach(option => {
-
-            if (option.filmId == filmSelector.value.toLowerCase()) {
-
-                filmCopySelector.innerHTML += `<option value="${option.filmCopyId}">${option.filmNumber}</option>`;
-            }
-
-        });
-
-
-    });
-    
-
-    document.addEventListener("DOMContentLoaded", function () {
-
-        fetchressources();
-
-    });
-
-    function fetchressources() {
-        fetch('/Bookings/Create?handler=FilmCopyList')
-            .then(response => response.json())
-            .then(data => {
-
-                pedaloData = data;
-                console.log(data);
-
-
-                // fill options
-
-                filmCopySelector.innerHTML = '';
-
-                data.forEach(option => {
-                    
-                    if (option.filmId == filmSelector.value.toLowerCase()) {
-
-                        filmCopySelector.innerHTML += `<option value="${option.filmCopyId}">${option.filmNumber}</option>`;
-                    }
-
-                });
-
-
-
-
-
-            })
-            .catch(error => console.error('Error:', error));
-
-
-    }
-
-</script>
+<script src="~/js/CreateBooking.js"></script>

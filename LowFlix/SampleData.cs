@@ -328,17 +328,15 @@ namespace LowFlix
 
             var booking1 = new Booking { CustomerId = customer1.CustomerId, RentalDate = new DateTime(2024, 4, 15) };
             var booking2 = new Booking { CustomerId = customer2.CustomerId, RentalDate = new DateTime(2024, 4, 14) };
-            var booking3 = new Booking { CustomerId = customer3.CustomerId, RentalDate = new DateTime(2024, 4, 10) };
             var booking4 = new Booking { CustomerId = customer4.CustomerId, RentalDate = new DateTime(2024, 4, 12) };
-            var booking5 = new Booking { CustomerId = customer5.CustomerId, RentalDate = new DateTime(2024, 4, 15) };
+            
             var booking6 = new Booking { CustomerId = customer6.CustomerId, RentalDate = new DateTime(2024, 4, 13) };
             var booking7 = new Booking { CustomerId = customer7.CustomerId, RentalDate = new DateTime(2024, 3, 23) };
 
             context.Bookings.Add(booking1);
             context.Bookings.Add(booking2);
-            context.Bookings.Add(booking3);
             context.Bookings.Add(booking4);
-            context.Bookings.Add(booking5);
+            
             context.Bookings.Add(booking6);
             context.Bookings.Add(booking7);
             
@@ -349,6 +347,7 @@ namespace LowFlix
             var filmCopy2 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 859430830945, BookingId = null };
             var filmCopy3 = new FilmCopy { FilmId = film7.FilmId, FilmNumber = 215783145773, BookingId = booking4.BookingId };
 
+
             var filmCopy4 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 891589895489, BookingId = null};
             var filmCopy5 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 349580943289, BookingId = booking2.BookingId};
             var filmCopy6 = new FilmCopy { FilmId = film5.FilmId, FilmNumber = 342891789273, BookingId = null };
@@ -357,6 +356,11 @@ namespace LowFlix
 
             var filmCopy9 = new FilmCopy { FilmId = film3.FilmId, FilmNumber = 923849330945, BookingId = booking7.BookingId };
             var filmCopy10 = new FilmCopy { FilmId = film3.FilmId, FilmNumber = 034950934859, BookingId = booking4.BookingId };
+
+            var filmCopy11 = new FilmCopy { FilmId = film6.FilmId, FilmNumber = 283749503208, BookingId = null };
+            var filmCopy12 = new FilmCopy { FilmId = film6.FilmId, FilmNumber = 908705685989, BookingId = null };
+            var filmCopy13 = new FilmCopy { FilmId = film6.FilmId, FilmNumber = 123452451435, BookingId = null };
+            var filmCopy14 = new FilmCopy { FilmId = film6.FilmId, FilmNumber = 123432343334, BookingId = booking4.BookingId };
 
             context.FilmCopies.Add(filmCopy1);
             context.FilmCopies.Add(filmCopy2);
@@ -368,6 +372,10 @@ namespace LowFlix
             context.FilmCopies.Add(filmCopy8);
             context.FilmCopies.Add(filmCopy9);
             context.FilmCopies.Add(filmCopy10);
+            context.FilmCopies.Add(filmCopy11);
+            context.FilmCopies.Add(filmCopy12);
+            context.FilmCopies.Add(filmCopy13);
+            context.FilmCopies.Add(filmCopy14);
 
             context.SaveChanges();
 

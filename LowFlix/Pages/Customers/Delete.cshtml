@@ -16,6 +16,10 @@
                 <label class="inputField">@Model.Customer.LastName</label>
             </div>
             <div class="formGroup">
+                <label asp-for="Customer.CustomerNumber">Customer Number</label>
+                <label class="inputField">@Model.Customer.CustomerNumber</label>
+            </div>
+            <div class="formGroup">
                 <label asp-for="Customer.BirthdayDate">Birthday</label>
                 <label class="inputField">@Model.getDate(Model.Customer.BirthdayDate)</label>
             </div>

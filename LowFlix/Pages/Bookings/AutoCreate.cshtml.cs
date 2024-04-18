@@ -57,42 +57,47 @@ namespace LowFlix.Pages.Bookings
           
             using var context = this.contextFactory.CreateContext();
 
-            try
+            if (FilmCopies.Count > 0)
             {
-
-                var newBooking = new Booking
+                try
                 {
-                    CustomerId = this.Customer.CustomerId,
-                    RentalDate = DateTime.Now,
-                };
 
-                context.Bookings.Add(newBooking);
-
-                context.SaveChanges();
-
-                foreach (var filmcopy in  FilmCopies)
-                {
-                    var filmcopyFromDb = context.FilmCopies.FirstOrDefault(x => x.FilmNumber == long.Parse(filmcopy.FilmCopyNumber));
-
-                    if (filmcopyFromDb == null)
+                    var newBooking = new Booking
                     {
-                        return this.NotFound();
-                    }
+                        CustomerId = this.Customer.CustomerId,
+                        RentalDate = DateTime.Now,
+                    };
 
-                    filmcopyFromDb.BookingId = newBooking.BookingId;
+                    context.Bookings.Add(newBooking);
 
                     context.SaveChanges();
 
+                    foreach (var filmcopy in FilmCopies)
+                    {
+                        var filmcopyFromDb = context.FilmCopies.FirstOrDefault(x => x.FilmNumber == long.Parse(filmcopy.FilmCopyNumber));
+
+                        if (filmcopyFromDb == null)
+                        {
+                            return this.NotFound();
+                        }
+
+                        filmcopyFromDb.BookingId = newBooking.BookingId;
+
+                        context.SaveChanges();
+
+                    }
+
+
                 }
-
-
-            }
-            catch (Exception)
-            {
-                return this.RedirectToPage("/Error");
+                catch (Exception)
+                {
+                    return this.RedirectToPage("/Error");
+                }
             }
 
-            return this.RedirectToPage("./Index");
+            
+
+            return this.RedirectToPage("../Index");
 
         }
 

@@ -36,6 +36,7 @@ namespace LowFlix.Pages.Customers
                     {
                         FirstName = Customer.FirstName,
                         LastName = Customer.LastName,
+                        CustomerNumber = Customer.CustomerNumber,
                         BirthdayDate = Customer.BirthdayDate,
                         PhoneNumber = Customer.PhoneNumber
                     };
@@ -58,6 +59,7 @@ namespace LowFlix.Pages.Customers
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public long CustomerNumber { get; set; }
         public DateTime BirthdayDate { get; set; }
         public string PhoneNumber { get; set; }
     }

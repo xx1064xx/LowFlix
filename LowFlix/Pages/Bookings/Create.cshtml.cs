@@ -27,8 +27,12 @@ namespace LowFlix.Pages.Bookings
         public BookingCreateModel Booking { get; set; }
         [BindProperty]
         public List<SelectListItem> CustomerList { get; set; } = new List<SelectListItem>();
+
         [BindProperty]
         public List<SelectListItem> FilmList { get; set; } = new List<SelectListItem>();
+
+        [BindProperty]
+        public List<FilmCopyCreate> FilmCopies { get; set; } = new List<FilmCopyCreate>();
 
         public void OnGet()
         {
@@ -114,8 +118,12 @@ namespace LowFlix.Pages.Bookings
     public class BookingCreateModel
     {
         public Guid CustomerId { get; set; }
-        public Guid FilmCopyId { get; set; }
         public DateTime RentalDate { get; set; }
+    }
+
+    public class FilmCopyCreate
+    {
+        public string FilmNumber { get; set; }
     }
 
 }

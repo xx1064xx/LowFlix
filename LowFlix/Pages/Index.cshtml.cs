@@ -19,7 +19,10 @@ namespace LowFlix.Pages
         }
 
         [BindProperty]  
-        public Customer Customer { get; set; }
+        public Customer StartCustomer { get; set; }
+
+        [BindProperty]
+        public Customer ReturnCustomer { get; set; }
 
         public IReadOnlyList<Booking> Bookings { get; set; }
 
@@ -41,7 +44,22 @@ namespace LowFlix.Pages
         public IActionResult OnPost()
         {
 
-            return this.RedirectToPage("./Bookings/AutoCreate", new { number = Customer.CustomerNumber });
+            if (StartCustomer.CustomerNumber != 0)
+            {
+                
+                return this.RedirectToPage("./Bookings/AutoCreate", new { number = StartCustomer.CustomerNumber });
+            }
+            else if (ReturnCustomer.CustomerNumber != 0)
+            {
+                return this.RedirectToPage("./Bookings/AutoDelete", new { number = ReturnCustomer.CustomerNumber });
+            }
+            else
+            {
+                return this.RedirectToPage("./Index");
+            }
+
+
+            
         }
 
         public string getDate(DateTime? dateTime)

@@ -37,6 +37,7 @@ namespace LowFlix.Pages.Customers
                     CustomerId = x.CustomerId,
                     FirstName = x.FirstName,
                     LastName = x.LastName,
+                    CustomerNumber = x.CustomerNumber,
                     BirthdayDate = x.BirthdayDate,
                     PhoneNumber = x.PhoneNumber
                 })
@@ -68,6 +69,7 @@ namespace LowFlix.Pages.Customers
             {
                 customer.FirstName = this.Customer.FirstName;
                 customer.LastName = this.Customer.LastName;
+                customer.CustomerNumber = this.Customer.CustomerNumber;
                 customer.BirthdayDate = this.Customer.BirthdayDate;
                 customer.PhoneNumber = this.Customer.PhoneNumber;
 
@@ -87,6 +89,7 @@ namespace LowFlix.Pages.Customers
         public Guid CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public long CustomerNumber { get; set; }
         public DateTime BirthdayDate { get; set;}
         public string PhoneNumber { get; set; }
     }
