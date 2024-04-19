@@ -64,8 +64,8 @@ function rebuildFilmCopyFields() {
 
         movieAddFields.innerHTML += `<div class="formGroup">
             <label>Film</label>
-            <label name="FilmCopies[${scannedFilmCopies.length}].FilmCopyNumber" class="inputField" value="${scannedFilmCopies[i]}">${scannedFilmCopies[i]}</label>
-            <input name="FilmCopies[${scannedFilmCopies.length}].FilmCopyNumber" class="inputField" value="${scannedFilmCopies[i]}" type="hidden">${scannedFilmCopies[i]}</input>
+            <label name="FilmCopies[${i}].FilmCopyNumber" class="inputField">${scannedFilmCopies[i]}</label>
+            <input name="FilmCopies[${i}].FilmCopyNumber" class="inputField" value="${scannedFilmCopies[i]}" type="hidden"></input>
         </div>`;
 
     }

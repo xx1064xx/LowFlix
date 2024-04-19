@@ -61,13 +61,18 @@ namespace LowFlix.Pages.FilmCopies
             using (var context = contextFactory.CreateContext())
             {
                 var FilmCopyToDelete = context.FilmCopies.FirstOrDefault(x => x.FilmCopyId == FilmCopy.FilmCopyId);
+
+
                 if (FilmCopyToDelete == null)
                 {
                     return NotFound();
                 }
 
-                context.FilmCopies.Remove(FilmCopyToDelete);
-                context.SaveChanges();
+                if (FilmCopyToDelete.BookingId == null)
+                {
+                    context.FilmCopies.Remove(FilmCopyToDelete);
+                    context.SaveChanges();
+                }
 
             }
 

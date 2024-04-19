@@ -30,6 +30,8 @@ namespace LowFlix.Pages.Films
             }
 
             using var context = this.contextFactory.CreateReadOnlyContext();
+
+            
             this.Film = context.Films
                 .Where(m => m.FilmId == id)
                 .Select(x => new FilmDeleteModel
@@ -57,6 +59,8 @@ namespace LowFlix.Pages.Films
             {
                 return BadRequest();
             }
+
+            
 
             using (var context = contextFactory.CreateContext())
             {
