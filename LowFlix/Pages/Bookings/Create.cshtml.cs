@@ -51,9 +51,6 @@ namespace LowFlix.Pages.Bookings
                 Value = a.FilmId.ToString(),
                 Text = a.Title,
             }).ToList();
-
-
-
         }
 
         public IActionResult OnPost()
@@ -71,16 +68,24 @@ namespace LowFlix.Pages.Bookings
                 var newBooking = new Booking
                 {
                     CustomerId = this.Booking.CustomerId,
-                    
-                    RentalDate = this.Booking.RentalDate,
+                    RentalDate = DateTime.Now,
                 };
 
                 context.Bookings.Add(newBooking);
-
                 
+
+                foreach (var filmCopy in  FilmCopies)
+                {
+                    long filmnumber = long.Parse(filmCopy.FilmNumber);
+
+                    var filmCopyToEdit = context.FilmCopies
+                        .Where(m => m.FilmNumber == filmnumber)
+                        .FirstOrDefault();
+
+                    filmCopyToEdit.BookingId = newBooking.BookingId;
+                }
+
                 context.SaveChanges();
-
-
 
             }
             catch (Exception)
@@ -118,7 +123,6 @@ namespace LowFlix.Pages.Bookings
     public class BookingCreateModel
     {
         public Guid CustomerId { get; set; }
-        public DateTime RentalDate { get; set; }
     }
 
     public class FilmCopyCreate

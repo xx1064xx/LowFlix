@@ -1,5 +1,5 @@
 const filmSelector = document.getElementById('FilmSelector');
-const addFieldDiv = document.getElementById('addFieldDiv');
+const movieAddFields = document.getElementById('movieAddFields');
 const filmCopySelector = document.getElementById('FilmCopySelector');
 var pedaloData = null;
 var counter = 0;
@@ -33,15 +33,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function addFilm() {
 
+    var number = filmCopySelector.options[filmCopySelector.selectedIndex].text;
+
+    console.log(number);
+
     if (filmCopySelector.value != "") {
-        var number = filmCopySelector.value;
+        //var number = filmCopySelector.value;
 
         FilmCopyNumbers.push(number);
 
-        addFieldDiv.innerHTML += `<div class="formGroup">
+        movieAddFields.innerHTML += `<div class="formGroup">
                 <label asp-for="Booking.RentalDate"></label>
                 <label class="inputField">${number}</label>
-                <input type="hidden" name="FilmCopies[${counter}]" />
+                <input type="hidden" name="FilmCopies[${counter}].FilmNumber" value="${number}" />
             </div>`;
 
         counter++;

@@ -7,7 +7,6 @@
 
 body.active {
     overflow: hidden;
-    background-color: darkolivegreen;
 }
 
 .tableContainer {
@@ -55,7 +54,7 @@ h3{
 
 .primaryButton {
     border: none;
-    color: black;
+    color: white;
     background-color: darkolivegreen;
     border-radius: 5px;
     text-decoration: none;
@@ -64,15 +63,15 @@ h3{
 
 .secondaryButton {
     border: none;
-    color: black;
-    background-color: lightgray;
+    color: white;
+    background-color: slategray;
     border-radius: 5px;
     text-decoration: none;
     padding: 7.5px;
 }
 .dangerButton {
     border: none;
-    color: black;
+    color: white;
     background-color: orangered;
     border-radius: 5px;
     text-decoration: none;
@@ -82,7 +81,7 @@ h3{
 .inputButton {
     border: none;
     color: black;
-    background-color: lightgray;
+    background-color: whitesmoke;
     border-radius: 5px;
     text-decoration: none;
     padding: 5px;

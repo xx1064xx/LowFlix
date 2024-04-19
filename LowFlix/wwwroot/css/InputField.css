@@ -52,6 +52,7 @@
 .inputCardField {
     width: 100%;
     border: none;
+    box-sizing: border-box;
     outline: none;
     background-color: whitesmoke;
     padding: 5px;

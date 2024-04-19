@@ -45,22 +45,42 @@ namespace LowFlix.Pages
         {
 
             using var context = this.contextFactory.CreateReadOnlyContext();
-            var existingCustomer = context.Customers
-                .FirstOrDefault(m => m.CustomerNumber == StartCustomer.CustomerNumber);
 
-            if (existingCustomer == null)
+            if (StartCustomer.CustomerNumber != 0)
             {
-                return this.RedirectToPage("./Index");
+                var existingCustomer = context.Customers
+                    .FirstOrDefault(m => m.CustomerNumber == StartCustomer.CustomerNumber);
 
-            }
-            else if (StartCustomer.CustomerNumber != 0)
-            {
-                
-                return this.RedirectToPage("./Bookings/AutoCreate", new { number = StartCustomer.CustomerNumber });
+                if (existingCustomer == null)
+                {
+                    
+                    return this.RedirectToPage("./Index");
+
+                }
+                else
+                {
+                    return this.RedirectToPage("./Bookings/AutoCreate", new { number = StartCustomer.CustomerNumber });
+                }
+
             }
             else if (ReturnCustomer.CustomerNumber != 0)
             {
-                return this.RedirectToPage("./Bookings/AutoDelete", new { number = ReturnCustomer.CustomerNumber });
+
+                var existingCustomer = context.Customers
+                    .FirstOrDefault(m => m.CustomerNumber == ReturnCustomer.CustomerNumber);
+
+                if (existingCustomer == null)
+                {
+
+                    return this.RedirectToPage("./Index");
+
+                }
+                else
+                {
+                    return this.RedirectToPage("./Bookings/AutoDelete", new { number = ReturnCustomer.CustomerNumber });
+                }
+
+                
             }
             else
             {

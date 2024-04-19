@@ -11,6 +11,7 @@ hamburgerMenu.addEventListener('click', () => {
     navbar.classList.toggle('active');
     lowFlixLogo.classList.toggle('active');
     body.classList.toggle('active');
+    header.classList.toggle('active');
 
     if (hamburgerMenu.classList.contains('active')) {
         navbarBottom.style.display = "flex";
@@ -49,6 +50,7 @@ function handleScreenChange() {
         navbar.classList.remove('active');
         lowFlixLogo.classList.remove('active');
         body.classList.remove('active');
+        header.classList.remove('active');
         hamburgerMenu.style.display = "none";
         navbarBottom.style.display = "flex";
     }

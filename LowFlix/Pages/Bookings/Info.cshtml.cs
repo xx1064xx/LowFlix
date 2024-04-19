@@ -22,8 +22,10 @@ namespace LowFlix.Pages.Bookings
 
         [BindProperty]
         public BookingEditModel Booking { get; set; }
-        public List<SelectListItem> CustomerList { get; set; }
-        public List<SelectListItem> FilmList { get; set; }
+
+        [BindProperty]
+        public Customer Customer { get; set; }
+        public List<FilmCopyInfoModel> FilmList { get; set; }
 
         public IActionResult OnGet(Guid? id)
         {
@@ -33,20 +35,6 @@ namespace LowFlix.Pages.Bookings
             }
 
             using var context = this.contextFactory.CreateReadOnlyContext();
-            CustomerList = context.Customers.Select(a =>
-            new SelectListItem
-            {
-                Value = a.CustomerId.ToString(),
-                Text = a.FirstName,
-            }).ToList();
-
-            FilmList = context.Films.Select(a =>
-            new SelectListItem
-            {
-                Value = a.FilmId.ToString(),
-                Text = a.Title,
-            }).ToList();
-
             this.Booking = context.Bookings
                 .Where(m => m.BookingId == id)
                 .Select(x => new BookingEditModel
@@ -58,7 +46,22 @@ namespace LowFlix.Pages.Bookings
                 })
                 .FirstOrDefault();
 
-            
+            Customer = context.Customers
+                .Where(m => m.CustomerId == this.Booking.CustomerId)
+                .FirstOrDefault();
+
+            FilmList = context.FilmCopies
+                .Where(m => m.BookingId == this.Booking.BookingId)
+                .Include(f => f.Film)
+                .Select(a =>
+                        new FilmCopyInfoModel
+                        {
+                            FilmCopyId = a.FilmCopyId,
+                            FilmNumber = a.FilmNumber,
+                            FilmTitle = a.Film.Title,
+                        })
+                .ToList();
+
 
             if (this.Booking == null)
             {
@@ -141,10 +144,11 @@ namespace LowFlix.Pages.Bookings
         public DateTime RentalDate { get; set; }
     }
 
-    public class OldFilmCopyEditModel
+    public class FilmCopyInfoModel
     {
         public Guid FilmCopyId { get; set; }
         public long FilmNumber { get; set; }
-        public Guid FilmId { get; set; }
+
+        public string FilmTitle { get; set; }
     }
 }

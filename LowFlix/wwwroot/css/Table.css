@@ -17,10 +17,3 @@ th, td {
 th {
     text-align: start;
 }
-
-/*
-tbody tr td:first-child:hover {
-    background-color: gray;
-    border-top-left-radius: 10px;
-}
-*/

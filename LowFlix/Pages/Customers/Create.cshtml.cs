@@ -28,6 +28,7 @@ namespace LowFlix.Pages.Customers
                 return Page();
             }
 
+
             try
             {
                 using (var context = contextFactory.CreateContext())

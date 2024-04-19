@@ -1,38 +1,38 @@
 ﻿@page
 @model LowFlix.Pages.Bookings.EditModel
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Info";
 }
 
-<h1>@ViewData["Title"] Bookings</h1>
+<h1>@ViewData["Title"] Booking</h1>
 
 <div>
     <div>
         <form method="post">
             <div class="formGroup">
-                <label asp-for="Booking.CustomerId">Customer</label>
-                <select class="inputField" asp-for="Booking.CustomerId" asp-items="Model.CustomerList"></select>
-            </div>
-            <div class="formGroup">
-                <label asp-for="Booking.FilmId">Film</label>
-                <select class="inputField" asp-for="Booking.FilmId" asp-items="Model.FilmList" id="FilmSelector"></select>
-            </div>
-            <div class="formGroup">
-                <label asp-for="Booking.FilmCopyId">Film</label>
-                <select class="inputField" asp-for="Booking.FilmCopyId" id="FilmCopySelector"></select>
+                <label>Customer</label>
+                <label class="inputField">@Model.Customer.FirstName</label>
             </div>
             <div class="formGroup">
                 <label asp-for="Booking.RentalDate"></label>
-                <input class="inputField" asp-for="Booking.RentalDate" />
+                <label class="inputField">@Model.Booking.RentalDate</label>
             </div>
+            
+            <h2>borrowed films</h2>
+
+            @foreach(var filmcopy in Model.FilmList)
+            {
+                <div class="formGroup">
+                    <label>@filmcopy.FilmTitle</label>
+                    <label class="inputField">@filmcopy.FilmNumber</label>
+                </div>
+            }
+           
+            
             <div class="buttonGroup">
                 <input asp-for="Booking.BookingId" type="hidden" />
-                <input asp-for="Booking.OldFilmCopyId" type="hidden" />
-                <input value="@Model.Booking.FilmCopyId" type="hidden" id="originalFilmCopyId"/>
-                <input value="@Model.Booking.FilmNumber" type="hidden" id="originalFilmNumber" />
-                <input value="@Model.Booking.FilmId" type="hidden" id="originalFilmId" />
-                <input type="submit" value="Edit" class="btn primaryButton" />
-                <a asp-page="Index" class="btn secondaryButton">Cancel</a>
+                
+                <a asp-page="Index" class="btn secondaryButton">Back</a>
             </div>
         </form>
     </div>
