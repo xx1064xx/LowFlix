@@ -37,17 +37,24 @@ namespace LowFlix.Pages.Bookings
         {
 
             using var context = this.contextFactory.CreateReadOnlyContext();
-            this.Customer = context.Customers
-                .Where(m => m.CustomerNumber == number)
-                .Select(x => new Customer
-                {
-                    CustomerId = x.CustomerId,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    CustomerNumber = x.CustomerNumber,
+            var existingCustomer = context.Customers
+                .FirstOrDefault(m => m.CustomerNumber == number);
 
-                })
-                .FirstOrDefault();
+            if (existingCustomer != null)
+            {
+                
+                this.Customer = new Customer
+                {
+                    CustomerId = existingCustomer.CustomerId,
+                    FirstName = existingCustomer.FirstName,
+                    LastName = existingCustomer.LastName,
+                    CustomerNumber = existingCustomer.CustomerNumber
+                };
+            }
+            else
+            {
+                Response.Redirect("/Default");
+            }
 
         }
 

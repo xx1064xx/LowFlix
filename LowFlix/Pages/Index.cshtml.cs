@@ -44,7 +44,16 @@ namespace LowFlix.Pages
         public IActionResult OnPost()
         {
 
-            if (StartCustomer.CustomerNumber != 0)
+            using var context = this.contextFactory.CreateReadOnlyContext();
+            var existingCustomer = context.Customers
+                .FirstOrDefault(m => m.CustomerNumber == StartCustomer.CustomerNumber);
+
+            if (existingCustomer == null)
+            {
+                return this.RedirectToPage("./Index");
+
+            }
+            else if (StartCustomer.CustomerNumber != 0)
             {
                 
                 return this.RedirectToPage("./Bookings/AutoCreate", new { number = StartCustomer.CustomerNumber });

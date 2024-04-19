@@ -37,6 +37,10 @@
     margin-right: 15px;
 }
 
+.lowFlixIndexLogo.active a {
+   color: white;
+}
+
 .lowFlixIndexLogo a {
     font-size: 2.5rem;
     color: darkolivegreen;
@@ -87,6 +91,14 @@
     transition: 0.3s ease;
 }
 
+    .hamburgerMenu.active span {
+        background-color: white;
+    }
+
+    .hamburgerMenu.active span:nth-child(2) {
+        background-color: darkolivegreen;
+    }
+
 .hamburgerMenu span:nth-child(1){
     top: 25%;
 }
@@ -114,18 +126,38 @@
 @media (max-width: 768px) {
 
     .navbar.active {
-        height: 20rem;
+        height: 100vh;
     }
 
     .navbarDiv {
         flex-direction: column;
         align-items: unset;
         left: 450px;
+        
     }
+
     
 
-        .navbarDiv div ul {
-            flex-direction: column;
-        }
+    .navbarBottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        
+    }
+
+    .navbarDiv div ul li a {
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+
+
+    .navbarDiv div ul {
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
 
 }

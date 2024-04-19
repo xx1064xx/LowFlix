@@ -16,6 +16,17 @@
 .inputField {
     max-width: 500px;
     border: none;
+    box-sizing: border-box;
+    outline: none;
+    background-color: whitesmoke;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.inputDate {
+
+    max-width: 490px;
+    border: none;
     outline: none;
     background-color: whitesmoke;
     padding: 5px;
@@ -24,14 +35,20 @@
 
 .inputCard {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    box-sizing: border-box;
     padding: 5px;
     max-width: 500px;
-    width: 100%;
-    background-color: navajowhite;
     border-radius: 5px;
+    background-color: slategray;
 }
+
+.inputCardFieldDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .inputCardField {
     width: 100%;
     border: none;
@@ -39,4 +56,5 @@
     background-color: whitesmoke;
     padding: 5px;
     border-radius: 5px;
+    margin-right: 5px;
 }

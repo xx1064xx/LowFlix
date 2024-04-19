@@ -40,7 +40,7 @@ function addOrRemoveFilmCopyFields(number) {
 
 
             movieAddFields.innerHTML += `<div class="formGroup">
-                <label>mongo</label>
+                <label>Film</label>
                 <label name="FilmCopies[${scannedFilmCopies.length}].FilmCopyNumber" class="inputField">${number}</label>
                 <input name="FilmCopies[${scannedFilmCopies.length}].FilmCopyNumber" class="inputField" value="${number}" type="hidden"></input>
             </div>`;
@@ -63,7 +63,7 @@ function rebuildFilmCopyFields() {
     for (let i = 0; i < scannedFilmCopies.length; i++) {
 
         movieAddFields.innerHTML += `<div class="formGroup">
-            <label>mongo</label>
+            <label>Film</label>
             <label name="FilmCopies[${scannedFilmCopies.length}].FilmCopyNumber" class="inputField" value="${scannedFilmCopies[i]}">${scannedFilmCopies[i]}</label>
             <input name="FilmCopies[${scannedFilmCopies.length}].FilmCopyNumber" class="inputField" value="${scannedFilmCopies[i]}" type="hidden">${scannedFilmCopies[i]}</input>
         </div>`;
